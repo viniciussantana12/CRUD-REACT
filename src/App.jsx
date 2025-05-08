@@ -44,18 +44,44 @@ const App = () => {
 
   return (
     <Flex h="100vh" 
-    align="center" 
+    align="flex-start"
     justify="center" 
     fontSize="20px" 
     fontFamily="poppins"
+    pt={10} 
     >
-      <Box maxW={800} w="100%" h="100vh" py={10} px={2}>
+      <Box
+          maxW={800}
+          w="100%"
+          h="auto"
+          rounded="lg"
+          shadow="xl"
+          overflow="hidden"
+        >
+
+      <Box
+        bg="blue.500"
+        color="white"
+        p={4}
+        mb={6}
+        rounded="md"
+        shadow="md"
+        textAlign="center"
+        fontSize="2xl"
+        fontWeight="bold"
+      >
+        Cadastro de Clientes
+      </Box>
+
+      <Flex justify="center" mb={4}>
         <Button colorScheme="blue" onClick={() => [setDataEdit({}), onOpen()]}>
           NOVO CADASTRO
         </Button>
+      </Flex>
+
 
         <Box overflowY="auto" height="100%">
-          <Table mt="6">
+        <Table mt={6} variant="simple" colorScheme="gray">
             <Thead>
               <Tr>
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
@@ -74,18 +100,26 @@ const App = () => {
                   <Td maxW={isMobile ? 5 : 100}>{name}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{email}</Td>
                   <Td p={0}>
-                      <EditIcon 
-                        fontSize={20} 
-                        onClick={() => [
-                          setDataEdit({ name, email, index }),
-                          onOpen(),
-                        ]}
-                      />
+                  <EditIcon
+                      fontSize={20}
+                      color="green.500"
+                      cursor="pointer"
+                      ml={2}
+                      onClick={() => [
+                        setDataEdit({ name, email, index }),
+                        onOpen(),
+                      ]}
+                    />
                   </Td>
                   <Td p={0}>
-                    <DeleteIcon 
-                      fontSize={20} 
-                      onClick={() => handleRemove(email)} />
+                  <DeleteIcon
+                    fontSize={20}
+                    color="red.600"
+                    cursor="pointer"
+                    ml={2}
+                    onClick={() => handleRemove(email)}
+                  />
+
                   </Td>
                 </Tr>
               ))}
